@@ -130,29 +130,6 @@ Bankable::ManyAddresses::NoteButton<7> noteButtons[] {
      note_A4
    }}
 };
- 
-
-
-/*
-NoteButton button1 { intervalPlay1Pin, {MIDI_Notes::C(4), CHANNEL_1} };
-NoteButton button2 { intervalPlay2Pin, {MIDI_Notes::E(4), CHANNEL_1} };
-NoteButton button3 { intervalPlay3Pin, {MIDI_Notes::G(4), CHANNEL_1} };
-NoteButton button4 { intervalPlay4Pin, {MIDI_Notes::B(4), CHANNEL_1} };
-
-CCButton button5 = { scaleDegree5Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button6 = { scaleDegree4Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button7 = { scaleDegree3Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button8 = { scaleDegree2Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button9 = { scaleDegree1Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-//CCButton button10 = { shiftPin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button13 = { augPin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button14 = { sus2Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button15 = { sus4Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button16 = { octUpPin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button17 = { octDownPin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button18 = { scaleDegree6Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-CCButton button19 = { scaleDegree7Pin, {MIDI_CC::General_Purpose_Controller_1, CHANNEL_1} };
-*/
 
 // Creates a filtered analog input for the key selection.
 FilteredAnalog<> simpleAnalog = keySelectPin;
@@ -177,40 +154,6 @@ void setup() {
 
 void loop() {
 
-  // Read the analog input every millisecond, and print if the value has changed
-  static Timer<millis> timer = 1; // ms
-  if (timer && simpleAnalog.update()) {
-    val_simpleAnalog = int(round(simpleAnalog.getValue()/dividedBits));
-    //Serial.println(val_simpleAnalog);
-  }
-  
-  // Explanation:
-  //
-  // analog.update() reads the analog input, applies the filters,
-  // saves the value, and returns true if the value has changed.
-  // You can then retreive the new value using analog.getValue().
-  //
-  // Timer is just a "Blink Without Delay" wrapper, it returns true
-  // every time the specified amount of time has passed.
-
-  /*
-  // put your main code here, to run repeatedly:
-  // enum State { Pressed = 0b00 , Released = 0b11 , Falling = 0b10 , Rising = 0b01 }
-  //int state_button1 = button1.getButtonState();
-  //int state_button2 = button2.getButtonState();
-  //int state_button3 = button3.getButtonState();
-  //int state_button4 = button4.getButtonState();
-  //int state_button5 = button5.getButtonState();
-  //int state_button6 = button6.getButtonState();
-  /*
-  if (button5.getButtonState() == 0) {
-    Serial.println("button_5 is pressed");
-  }
-  if (button6.getButtonState() == 0) {
-    Serial.println("button_6 is pressed");
-  }
-  */
-  
   Control_Surface.loop(); // Update the Control Surface
 
 }
