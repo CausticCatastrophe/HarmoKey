@@ -38,12 +38,8 @@ const pin_t keySelectPin = A7;
 uint16_t val_simpleAnalog;
 float dividedBits = 93; // bit resolution of analog is 1023. Divide by steps. (1023 / 11)
 
-// Instantiate a NoteButton objects
-// NoteButton(pin_t pin, MIDIAddress address, uint8_t velocity = 0x7F)
-
 Bank<7> bank(4);
 IncrementDecrementSelector<7> bankSelector {bank, {octUpPin, octDownPin}, Wrap::Wrap};
-using namespace MIDI_PC;
 
 MIDIAddress note_C3 = {MIDI_Notes::C(3), CHANNEL_1};
 MIDIAddress note_Db3 = {MIDI_Notes::Db(3), CHANNEL_1};
@@ -138,9 +134,6 @@ FilteredAnalog<> simpleAnalog = keySelectPin;
 Button pushbutton {shiftPin};
 
 void setup() {
-  //Serial.begin(115200);
-  //while (!Serial);
-
   // Select the correct ADC resolution
   FilteredAnalog<>::setupADC();
   
